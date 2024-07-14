@@ -1,0 +1,28 @@
+{
+  "name": "coc_api",
+  "version": "1.0.0",
+  "description": "An api to collect clan data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmlowerence/coc_api.git"
+  },
+  "author": "Chudamani Lawrence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmlowerence/coc_api/issues"
+  },
+  "homepage": "https://github.com/cmlowerence/coc_api#readme",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
