@@ -44,6 +44,38 @@ const getClanData = async (req, res) => {
   return res.status(apiResponse.status).json(apiResponse);
 };
 
+const getClanWarLog = async (req, res) => {
+  const clanTag = encodeURIComponent(`#${req.params.tag}`);
+  const apiResponse = await apiGetReq(`/clans/${clanTag}/warlog`)
+  return res.status(apiResponse.status).json(apiResponse);
+}
+
+const getClanCurrentWarData = async (req, res) => {
+  const clanTag = encodeURIComponent(`#${req.params.tag}`);
+  const apiResponse = await apiGetReq(`/clans/${clanTag}/currentwar`);
+  return res.status(apiResponse.status).json(apiResponse);
+}
+
+const getClanMembers = async (req, res) => {
+  const clanTag = encodeURIComponent(`#${req.params.tag}`);
+  const apiResponse = await apiGetReq(`/clans/${clanTag}/members`);
+  return res.status(apiResponse.status).json(apiResponse);
+}
+
+
+
+// Get Request to fetch player data
+
+const getPlayerData = async (req, res) => {
+  const playerTag = encodeURIComponent(`#${req.params.tag}`);
+  const apiResponse = await apiGetReq(`/players/${playerTag}`);
+  return res.status(apiResponse.status).json(apiResponse);
+}
+
 module.exports = {
   getClanData,
+  getClanWarLog,
+  getClanCurrentWarData,
+  getClanMembers,
+  getPlayerData,
 };

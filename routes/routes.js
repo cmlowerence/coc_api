@@ -11,14 +11,14 @@
 
 
 const express = require('express');
-const { getClanData } = require('../controllers/controllers');
+const { getClanData, getClanWarLog, getPlayerData, getClanMembers } = require('../controllers/controllers');
 
 const router = express.Router();
 
 // Routers:
-router.get('/clan/:tag',(req, res, next) => {
-  console.log(`Received request for clan: ${req.params.tag}`);
-  next();
-}, getClanData);
+router.get('/clan/:tag', getClanData);
+router.get('/clan/:tag/warLog', getClanWarLog);
+router.get(`clan/:tag/members`, getClanMembers);
+router.get(`/player/:tag`, getPlayerData)
 
 module.exports = router;
