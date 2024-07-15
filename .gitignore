@@ -7,18 +7,13 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
-frontend/node_modules/
-api/node_modules/
 
-# Build directories
-dist/
-frontend/dist/
 
 # Vite cache
 .vite/
 
 # dotenv environment variables file
-api/.env
+.env
 
 # Miscellaneous
 .DS_Store
