@@ -18,7 +18,7 @@ const router = express.Router();
 // Routers:
 router.get('/clan/:tag', getClanData);
 router.get('/clan/:tag/warLog', getClanWarLog);
-router.get(`clan/:tag/members`, getClanMembers);
+router.get(`/clan/:tag/members`, getClanMembers);
 router.get(`/player/:tag`, getPlayerData)
 
 module.exports = router;
