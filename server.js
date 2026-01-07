@@ -1,40 +1,28 @@
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const cors = require('cors');
-// const path = require('path');
-// const router = require('./routes/routes');
-
-// dotenv.config();
-
-// const app = express();
-// const port = process.env.PORT || 3000;
-
-// app.use(cors());
-// app.use(express.json());
-
-// app.use('/api', router);
-
-// app.listen(port, ()=> {
-//   console.log('Serve running on port ',port);
-// });
-
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const path = require('path');
-const router = require('./routes/routes');
-const { getClanData } = require('./controllers/controllers');
-
-dotenv.config();
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const apiRoutes = require("./src/routes/apiRoutes");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', router);
-
-app.listen(port, () => {
-  console.log('Server running on port', port);
+// Security: Rate Limiting
+// Limit each IP to 100 requests per 15 minutes
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100, 
+  message: { error: "Too many requests, please try again later." }
 });
+app.use(limiter);
+
+// Mount the generic routes
+app.use("/api", apiRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
+});
+
